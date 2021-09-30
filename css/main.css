@@ -1,0 +1,20 @@
+body {
+  background-color: white;
+  text-align: center;
+}
+
+#game {
+  position: relative; /*so I can then move the car*/
+  width: 60vw; /*60% of the width of the screen*/
+  height: 90vh;
+  outline: 1px solid black;
+  margin-top: 5vh;
+  margin: 5vh auto;
+  background: grey;
+}
+
+.car {
+  position: absolute; 
+  background-color: orange;
+
+}

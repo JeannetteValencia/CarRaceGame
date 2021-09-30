@@ -6,7 +6,7 @@ body {
 #game {
   position: relative; /*so I can then move the car*/
   width: 60vw; /*60% of the width of the screen*/
-  height: 90vh;
+  height: 70vh;
   outline: 1px solid black;
   margin-top: 5vh;
   margin: 5vh auto;
@@ -16,5 +16,12 @@ body {
 .car {
   position: absolute; 
   background-color: orange;
+
+}
+
+.obstacle {
+  position: absolute; 
+  background-color: blue;
+  transition: all 1s linear;
 
 }

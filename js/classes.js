@@ -3,6 +3,7 @@ class Game {
     this.currentTime= 0;
     this.car = null;
     this.obstacleArr = [];
+    this.points = 0;
   }
   startGame(){
     this.car = new Car();
@@ -14,13 +15,17 @@ class Game {
       //update timer
       this.currentTime++;
       //update obstacle position
+       if (this.currentTime % 30){
+         this.point ++
+       }
+      
       this.obstacleArr.forEach( (obstacle) => {
         obstacle.moveDown();
         obstacle.draw();
-
+        
         //colission detention
         if (obstacle.y === 100){
-          if (this.car.x < obstacle.x + obstacle.width && this.car.x + this.card.width > obstacle.x){
+          if (this.car.x < obstacle.x + obstacle.width && this.car.x + this.car.width > obstacle.x){
             alert ("GAME OVER");
           }
         } else if ( obstacle.y > 100){
@@ -29,7 +34,7 @@ class Game {
         }
       });
 
-      if (this.currentTime % 8 === 0){
+      if (this.currentTime % 5 === 0){
         const newObstacle = new Obstacle ();
         newObstacle.create();//appending to the dom
         this.obstacleArr.push(newObstacle);
@@ -77,10 +82,10 @@ class Thing {
 class Car extends Thing{
   constructor (){
     super();//calls the constructor of the super class
-    this.x = 50; //position center
-    this.y = 100;
     this.width = 10;
     this.height = 15;
+    this.x = 50; //position center
+    this.y = 100;
     this.className = "car";
     this.movementSpeed = 3;
   }
@@ -103,11 +108,12 @@ class Car extends Thing{
 class Obstacle extends Thing{
   constructor (){
     super();
-    this.className = "obstacle";
-    this.x = 50; //position center
-    this.y = 0;
-    this.width = 20;
+    this.width = Math.floor(Math.random()*(20-10+1)+10);;
     this.height = 10;
+    //this.x = 50; //position center
+    this.x = Math.floor(Math.random()*(100-this.width+1)); //to add obstacles to a random position
+    this.y = 0;
+    this.className = "obstacle";
   }
 
   moveDown(){
